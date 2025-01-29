@@ -1,7 +1,7 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
-
+//Name - Evelyn Ibarra
+ 
 import java.util.Queue;
 import java.util.PriorityQueue;
 import java.util.LinkedList;
@@ -10,8 +10,21 @@ public class ArrayReduction
 {
 	public static int min_cost( int[] r )
 	{
-		//MUST USE A PRIORITY QUEUE
-		return 0;	
+		PriorityQueue<Integer> pq = new PriorityQueue<>();
+		for (int num : r) {
+			pq.add(num);
+		}
+		
+		int totalCost = 0;
+		while (pq.size() > 1) {
+			int first = pq.poll();
+			int second = pq.poll();
+			int sum = first + second;
+			totalCost += sum;
+			pq.add(sum);
+		}
+		
+		return totalCost;	
 	}
 	
 	public static void main( String[] args )
